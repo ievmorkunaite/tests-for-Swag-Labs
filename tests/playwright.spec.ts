@@ -38,14 +38,14 @@ test('generating tests', async ({ page }) => {
 
 // TESTS FROM EXAMPLE
 test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  await page.goto(domain);
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 });
 
 test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  await page.goto(domain);
 
   // Click the get started link.
   await page.getByRole('link', { name: 'Get started' }).click();
