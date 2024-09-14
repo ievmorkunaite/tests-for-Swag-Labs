@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+const domain = 'https://playwright.dev/';
+
 test('get docs', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  await page.goto(domain);
 
   await page.getByRole('link', { name: 'Docs' }).click();
 
@@ -13,7 +15,7 @@ test('get docs', async ({ page }) => {
 });
 
 test('writing test', async ({ page }) => {
-  await page.goto('https://playwright.dev/docs/codegen');
+  await page.goto(`${domain}docs/codegen`);
 
   await page.getByRole('link', { name: 'Writing tests' }).click();
 
@@ -23,7 +25,7 @@ test('writing test', async ({ page }) => {
 });
 
 test('generating tests', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+  await page.goto(domain);
 
   await page.getByRole('link', { name: 'Get started' }).click();
 

@@ -2,9 +2,10 @@ import { test, expect } from '@playwright/test';
 
 const validUser = 'standard_user';
 const validPassword = 'secret_sauce';
+const domain = 'https://www.saucedemo.com/';
 
 test('login with valid credentials', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(domain);
   await page.locator('[data-test="username"]').click();
   await page.locator('[data-test="username"]').fill(validUser);
   await page.locator('[data-test="password"]').click();
@@ -16,7 +17,7 @@ test('login with valid credentials', async ({ page }) => {
 });
 
 test('login with invalid credentials', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(domain);
   await page.locator('[data-test="username"]').click();
   await page.locator('[data-test="username"]').fill('invalidUser');
   await page.locator('[data-test="password"]').click();
@@ -30,7 +31,7 @@ test('login with invalid credentials', async ({ page }) => {
 });
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
+  await page.goto(domain);
   await page.locator('[data-test="username"]').click();
   await page.locator('[data-test="username"]').fill(validUser);
   await page.locator('[data-test="password"]').click();
