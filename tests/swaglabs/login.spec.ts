@@ -4,7 +4,7 @@ const validUser = 'standard_user';
 const validPassword = 'secret_sauce';
 const domain = 'https://www.saucedemo.com/';
 
-// * Tests for Login
+// * Tests for Login page
 test('login with valid credentials', async ({ page }) => {
   await page.goto(domain);
   await page.locator('[data-test="username"]').click();
@@ -14,7 +14,7 @@ test('login with valid credentials', async ({ page }) => {
   await page.locator('[data-test="login-button"]').click();
 
   // checks
-  await expect(page.locator('[data-test="title"]')).toHaveText('Products');
+  await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 });
 
 test('login with invalid credentials', async ({ page }) => {
@@ -31,41 +31,16 @@ test('login with invalid credentials', async ({ page }) => {
   );
 });
 
-// TODO login w invalid username / password
-
-test.beforeEach(async ({ page }) => {
+test('login with locked out user credentials', async ({ page }) => {
   await page.goto(domain);
   await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill(validUser);
+  await page.locator('[data-test="username"]').fill('locked_out_user');
   await page.locator('[data-test="password"]').click();
-  await page.locator('[data-test="password"]').fill(validPassword);
+  await page.locator('[data-test="password"]').fill('secret_sauce');
   await page.locator('[data-test="login-button"]').click();
-});
-
-// * Tests for Homepage
-
-test('Add to cart button changes to Remove', async ({ page }) => {
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
 
   // checks
-  await expect(
-    page.locator('[data-test="remove-sauce-labs-backpack"]')
-  ).toBeVisible();
-});
-
-test('test', async ({ page }) => {
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('[data-test="shopping-cart-link"]').click();
-
-  // checks
-  await expect(page.locator('[data-test="inventory-item"]')).toBeVisible();
-});
-
-test('removing item from cart on the cart page', async ({ page }) => {
-  await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-  await page.locator('[data-test="shopping-cart-link"]').click();
-  await page.locator('[data-test="remove-sauce-labs-backpack"]').click();
-
-  // checks
-  await expect(page.locator('[data-test="inventory-item"]')).not.toBeVisible();
+  await expect(page.locator('[data-test="error"]')).toHaveText(
+    'Epic sadface: Sorry, this user has been locked out.'
+  );
 });
