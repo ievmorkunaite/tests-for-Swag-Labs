@@ -15,4 +15,4 @@ This repository is used for me to learn test automation. It contains automated t
 # Credits
 
 The test plans and test cases for the project were co-written by me and [María José Domínguez](https://www.linkedin.com/in/maria-jose-dominguez/).  
-Test plans can be found [here](https://drive.google.com/drive/folders/1w5KZMLLf9C5b9rnJuo6VEd-EwpaK4eaG?usp=drive_link).
+Test plans can be found [here](https://drive.google.com/drive/folders/1w5KZMLLf9C5b9rnJuo6VEd-EwpaK4eaG?usp=sharing), or in the test-plans folder.
