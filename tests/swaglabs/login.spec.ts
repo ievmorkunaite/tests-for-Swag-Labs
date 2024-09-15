@@ -1,8 +1,5 @@
 import { test, expect } from '@playwright/test';
-
-const validUser = 'standard_user';
-const validPassword = 'secret_sauce';
-const domain = 'https://www.saucedemo.com/';
+import { domain, validPassword, validUser } from '.';
 
 // * Tests for Login page
 test('login with valid credentials', async ({ page }) => {

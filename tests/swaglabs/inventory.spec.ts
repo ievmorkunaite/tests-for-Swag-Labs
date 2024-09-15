@@ -1,16 +1,8 @@
 import { test, expect } from '@playwright/test';
-
-const validUser = 'standard_user';
-const validPassword = 'secret_sauce';
-const domain = 'https://www.saucedemo.com/';
+import { login } from '.';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(domain);
-  await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill(validUser);
-  await page.locator('[data-test="password"]').click();
-  await page.locator('[data-test="password"]').fill(validPassword);
-  await page.locator('[data-test="login-button"]').click();
+  await login(page);
 });
 
 // * Tests for Inventory page
