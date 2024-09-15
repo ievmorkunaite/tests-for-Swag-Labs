@@ -4,6 +4,7 @@ const validUser = 'standard_user';
 const validPassword = 'secret_sauce';
 const domain = 'https://www.saucedemo.com/';
 
+// * Tests for Login
 test('login with valid credentials', async ({ page }) => {
   await page.goto(domain);
   await page.locator('[data-test="username"]').click();
@@ -30,6 +31,8 @@ test('login with invalid credentials', async ({ page }) => {
   );
 });
 
+// TODO login w invalid username / password
+
 test.beforeEach(async ({ page }) => {
   await page.goto(domain);
   await page.locator('[data-test="username"]').click();
@@ -38,6 +41,8 @@ test.beforeEach(async ({ page }) => {
   await page.locator('[data-test="password"]').fill(validPassword);
   await page.locator('[data-test="login-button"]').click();
 });
+
+// * Tests for Homepage
 
 test('Add to cart button changes to Remove', async ({ page }) => {
   await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
