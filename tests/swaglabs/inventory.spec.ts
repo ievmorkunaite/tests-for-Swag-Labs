@@ -6,7 +6,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 // * Tests for Inventory page
-
 test('Add to cart button changes to Remove', async ({ page }) => {
   await page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
 

@@ -6,7 +6,6 @@ test.beforeEach(async ({ page }) => {
 });
 
 // * Tests for Shopping cart
-
 test('Product quantity and price are displayed in the Cart page', async ({
   page,
 }) => {
