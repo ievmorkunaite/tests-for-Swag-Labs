@@ -75,7 +75,7 @@ test('Cannot continue to Overview page without filling in Last Name', async ({
   );
 });
 
-test.only('Cannot continue to Overview page without filling in Zip', async ({
+test('Cannot continue to Overview page without filling in Zip', async ({
   page,
 }) => {
   await page.locator('[data-test="shopping-cart-link"]').click();
