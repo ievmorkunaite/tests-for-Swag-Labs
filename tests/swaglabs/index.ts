@@ -12,3 +12,16 @@ export async function login(page: Page) {
   await page.locator('[data-test="password"]').fill(validPassword);
   await page.locator('[data-test="login-button"]').click();
 }
+
+export function extractAmount(amount: string | null): number {
+  if (!amount) {
+    return 0;
+  }
+  const amountInString = amount.split('$').pop();
+  if (!amountInString) {
+    return 0;
+  }
+
+  const result: number = +amountInString;
+  return result;
+}
